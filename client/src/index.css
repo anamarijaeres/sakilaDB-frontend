@@ -1,0 +1,64 @@
+:root{
+  --blue: #0A2239;
+  --gray:#A1A6B4;
+  --light-blue: #94C5CC;
+  --columbia-blue:#94C5CC;
+  --seasalt: #F8F8F8;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to right,var(--columbia-blue), var(--seasalt) );
+  
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.actor_card{
+  text-align: left;
+  
+}
+
+.search_row{
+  margin-left: -15px;
+  
+}
+.addfilm_row{
+  margin-right: 30px;
+}
+
+.display_actor_container{
+  margin: 17px -100px 2px 110px;
+}
+
+.row_allactor_cards{
+  margin: 12px -60px 2px 50px;
+}
+
+.film_card_extra{
+  text-align: left;
+}
+.more_btn{
+  text-align: left;
+}
+.btn{
+  width:max-content;
+}
+
+.delete_btn{
+  text-align: right;
+}
+
+.btn__primary{
+  background-color: var(--blue);
+}

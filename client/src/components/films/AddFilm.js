@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Image, Modal,Form,Input,Select,TextArea } from 'semantic-ui-react'
+import { Button, Modal,Form,Input,Select,TextArea } from 'semantic-ui-react'
 import axios from "axios";
 
 import "../../index.css"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card,Grid,Input ,Button,Icon, GridColumn,Reveal,Dropdown,Label,Popup} from "semantic-ui-react";
+import { Card,Button,Icon, Popup} from "semantic-ui-react";
 import axios from "axios";
 
 import "../../index.css"

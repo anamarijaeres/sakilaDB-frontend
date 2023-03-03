@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import { Button, Checkbox, Form,Input,Message } from 'semantic-ui-react'
+import { Button,  Form,Input} from 'semantic-ui-react'
 
 let endpoint = "http://localhost:8080";
 
@@ -55,7 +55,6 @@ class AddActor extends React.Component{
                     console.log(res.status);
                     alert("You've added new actor!")
                 }).catch((error) =>{
-                    alert("You cannot ")
                     console.log(error)});
                 }
             

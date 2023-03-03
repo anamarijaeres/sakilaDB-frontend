@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Card,Grid,Input ,Button,Icon, GridColumn,Reveal,Dropdown,Label,Popup} from "semantic-ui-react";
+import {Grid,Input ,Button, GridColumn,Dropdown,Label} from "semantic-ui-react";
 import axios from "axios";
-import InlineEdit from '../actors/InlineEdit'
 import "../../index.css"
 import FilmCard from "./FilmCard";
 import AddFilm from "./AddFilm";
@@ -24,7 +23,6 @@ function SearchFilm ({ func,vis}){
 
     const categoryOptions = [
         { key: 'Action', value: 'Action',  text: 'Action' },
-        { key: 'Animation', value: 'Animation',  text: 'Animation' },
         { key: 'Children', value: 'Children',  text: 'Children' },
         { key: 'Classics', value: 'Classics', text: 'Classics' },
         { key: 'Comedy', value: 'Comedy', text: 'Comedy' },
@@ -184,7 +182,7 @@ function SearchFilm ({ func,vis}){
                         </Input>
                     </Grid.Column>
                     <Grid.Column>
-                        <Button onClick={handleOnClickRentalRate}>Search affordable films</Button>
+                        <Button onClick={handleOnClickRentalRate}>Search films by rate</Button>
                     </Grid.Column>
                 </Grid.Row>
 

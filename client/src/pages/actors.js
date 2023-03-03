@@ -1,8 +1,6 @@
 
 import React,{useState} from "react";
-import { Link } from "react-router-dom";
-import { Container,Card,Header,Icon, Button, Grid } from "semantic-ui-react";
-import ActorList from "../ActorList";
+import { Container, Grid } from "semantic-ui-react";
 import AddActor from "../components/actors/AddActor";
 import AllActors from "../components/actors/AllActors";
 import SearchBar from "../components/actors/SearchBar";

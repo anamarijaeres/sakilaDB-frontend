@@ -1,8 +1,5 @@
 import React from "react";
 import "./App.css";
-// import the Container Component from the semantic-ui-react
-
-import Main from "./Main";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from 'react-router-dom';
 

@@ -1,12 +1,9 @@
 
 import React,{useState} from "react";
-import { Container,Card,Header,Icon, Button, Grid ,TransitionablePortal,Segment} from "semantic-ui-react";
+import { Container,Card, Grid ,TransitionablePortal,Segment} from "semantic-ui-react";
 import SearchFilm from "../components/films/SearchFilm";
 import "../index.css"
-import { Link } from "react-router-dom";
 
-import AddActor from "../components/actors/AddActor";
-import AllActors from "../components/actors/AllActors";
   
 const Films = () => {
 
@@ -39,7 +36,6 @@ const Films = () => {
                 <Grid.Column>
                      <TransitionablePortal
                           open={!open}
-                          
                         >
                           <Segment
                             style={{
@@ -69,11 +65,7 @@ const Films = () => {
                         </TransitionablePortal>
                 </Grid.Column>
             </Grid.Row>
-
         </Grid>
-        
-        
-        
       </Container>
      
     </div>

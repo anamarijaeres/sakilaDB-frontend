@@ -1,21 +1,15 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { CarouselProvider, Image, Slide, Slider } from "pure-react-carousel";
+
 
 import {
   Button,
   Container,
-  Divider,
-  Grid,
   Header,
-  Icon,
-
-  List,
-  Menu,
-  Segment,
-  Sidebar,
+  Icon
 } from 'semantic-ui-react'
+
 const Home = () => {
     return (
       <Container className="home" text>
@@ -32,8 +26,7 @@ const Home = () => {
         />
         <Header
           as='h2'
-          content='Search for actors, films, add new actors and so much more :)
-          Play around with Sakila DB'
+          content='Search for actors, films, add new actors and so much more :)'
           inverted
           style={{
             fontSize:  '1.7em',

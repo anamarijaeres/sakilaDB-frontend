@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import {Card, Container, Grid, Button, CardContent, Icon,Section, Segment} from 'semantic-ui-react'
-import FilmCard from "../films/FilmCard";
+import React, {  useState } from "react";
+import {Card, Container, Grid} from 'semantic-ui-react'
+
 
 import "../../index.css"
 

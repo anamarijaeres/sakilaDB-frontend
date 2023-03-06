@@ -7,8 +7,6 @@ import Home from './pages/home';
 import Actors from './pages/actors';
 import Films from './pages/films';
 
-// import the ToDoList component
-
 
 function App() {
   return (

@@ -37,10 +37,7 @@ class AddFilm extends React.Component{
     };
     getRating = (event, {value}) => {
         console.log(value);
-        
         this.setState({rating:value})
-        
-
         console.log('Rating clicked')
     };
 

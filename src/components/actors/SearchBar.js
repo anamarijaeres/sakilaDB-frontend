@@ -9,7 +9,7 @@ import ActorCard from "./ActorCard";
 function SearchBar ({func,vis}){
     const [text, setText] =useState('')
     const [actors,setActors]= useState([]);
-    const [edit, setEdit] = useState();
+   
 
     const handleOnClick= () =>{
         console.log('Search clicked')

@@ -8,11 +8,7 @@ import "../../index.css"
 
 function ActorCard({ data ,func,vis}){
     const [open,setOpen]=useState(true)
-    const [film, setFilms] = useState([]);
-    const [openMod,setOpenMod]=useState(false)
-
-
-
+ 
 
     const handleClickOpen = (id) => {
         setOpen(!open)
@@ -27,7 +23,7 @@ function ActorCard({ data ,func,vis}){
         .then((result) => {
             console.log(open)
             console.log(result.data);
-            setFilms(result.data);
+            
             func(open,result.data)
             
         })

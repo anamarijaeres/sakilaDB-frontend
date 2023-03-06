@@ -6,37 +6,13 @@ import {Card, Container, Grid} from 'semantic-ui-react'
 import "../../index.css"
 
 
-
-function AllActors({films,func,vis}) {
-    const [posts, setPosts] = useState([]);
-    const [displayed,setDisplayed]= useState(false)
-    
-    
-
-    const handleOnClick= () =>{
-        if(displayed==false){
-        console.log('All actors clicked')
-        axios
-        .get("http://localhost:8080/actors")
-        .then((result) => {
-          console.log(result.data);
-          setPosts(result.data);
-        })
-        .catch((error) => console.log(error));
-        setDisplayed(true)
-        }else{
-            setPosts([])
-            setDisplayed(false)
-        }
-    }
-
+function AllActors({films}) {
+   
     return (
         <Container>
             <Grid columns={1}>
-                
-                
                 <Grid.Row className="row_allactor_cards">
-                   
+    
                     {films.map((data) => {
                         return (
                            < Card key={data.FilmId}>

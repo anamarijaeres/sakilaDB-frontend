@@ -1,4 +1,3 @@
-
 import React,{useState} from "react";
 import { Container, Grid } from "semantic-ui-react";
 import AddActor from "../components/actors/AddActor";
@@ -9,7 +8,6 @@ import "../index.css"
   
 const Actors = () => {
   const [vis,setVis]=useState(true)
-  const [open,setOpen]=useState(true)
   const [film,setFilm]= useState([]);
 
   const pull_data=(open,data)=>{
@@ -17,7 +15,6 @@ const Actors = () => {
     console.log(data)
     console.log(open)
     setFilm(data)
-    setOpen(open)
     setVis(!open)
 
   }

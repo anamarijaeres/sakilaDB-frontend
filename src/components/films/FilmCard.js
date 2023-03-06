@@ -6,19 +6,13 @@ import "../../index.css"
 
 
 
-function FilmCard({ data ,func,vis}){
+function FilmCard({ data ,func}){
     const [open,setOpen]=useState(false)
-    const [post, setPost] = useState([]);
-
-
-
+  
 
     const handleClickOpen = (id) => {
         setOpen(!open)
-
-        
         console.log("card")
-
         console.log(open)
 
        axios
@@ -26,17 +20,10 @@ function FilmCard({ data ,func,vis}){
         .then((result) => {
             console.log(open)
             console.log(result.data);
-            setPost(result.data);
             func(open,result.data)
             
         })
         .catch((error) => console.log(error));
-
-        
-
-
-
-
 
     }
 
@@ -56,8 +43,6 @@ function FilmCard({ data ,func,vis}){
         .catch((error) =>{
         alert("You cannot delete film "+data.Title+", since you haven't created it!")
         console.log(error)});
-    
-
     }
 
 
@@ -79,7 +64,7 @@ function FilmCard({ data ,func,vis}){
             <div className="more_btn">
             <Reveal animated='move down'>
             <Reveal.Content visible>
-                <Button className=".btn" primary color='blue' content={open ? 'Read' : 'Read'} onClick={()=>handleClickOpen(data.FilmId)} >
+                <Button className=".btn" primary color='blue' content='Read' onClick={()=>handleClickOpen(data.FilmId)} >
                     
                 </Button>
             </Reveal.Content>
@@ -89,7 +74,6 @@ function FilmCard({ data ,func,vis}){
                 </Button>
             </Reveal.Content>
             </Reveal>
-            
             </div>
             
             <div className="delete_btn">
@@ -100,9 +84,6 @@ function FilmCard({ data ,func,vis}){
                     inverted
                     position="right center"
                     />
-
-                
-                    
                 </a>
             </div>
             

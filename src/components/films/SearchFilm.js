@@ -8,8 +8,6 @@ import AddFilm from "./AddFilm";
 function SearchFilm ({ func,vis}){
     const [text, setText] =useState('')
     const [films,setFilms]= useState([]);
-    const [edit, setEdit] = useState();
-    const [rating, setRating] =useState('')
     const [amount, setAmount] =useState('')
    
     const options = [
@@ -56,19 +54,7 @@ function SearchFilm ({ func,vis}){
         .catch((error) => console.log(error));
     }
 
-    const handleOnClickRating= () =>{
-        console.log('Rating clicked')
-        const url="http://localhost:8080/films/rating?rating="+rating
-        console.log(url)
-        axios
-        .get(url)
-        .then((result) => {
-            console.log(result.data);
-            setFilms(result.data);
-        
-        })
-        .catch((error) => console.log(error));
-    }
+   
 
     const handleOnClickRentalRate= () =>{
         console.log('Renatl rate clicked')
@@ -88,10 +74,6 @@ function SearchFilm ({ func,vis}){
 
     const getRating = (event, {value}) => {
         console.log(value);
-        
-        
-        
-
         console.log('Rating clicked')
         const url="http://localhost:8080/films/rating?rating="+value
         console.log(url)
@@ -100,20 +82,14 @@ function SearchFilm ({ func,vis}){
         .then((result) => {
             console.log(result.data);
             setFilms(result.data);
-            setRating(value)
+           
         
         })
         .catch((error) => console.log(error));
-        
-
     }
 
     const getCategory = (event, {value}) => {
         console.log(value);
-        
-        
-        
-
         console.log('Category clicked')
         const url="http://localhost:8080/films/category?c="+value
         console.log(url)
@@ -122,12 +98,10 @@ function SearchFilm ({ func,vis}){
         .then((result) => {
             console.log(result.data);
             setFilms(result.data);
-            setRating(value)
+           
         
         })
         .catch((error) => console.log(error));
-        
-
     }
 
     return(
@@ -152,11 +126,8 @@ function SearchFilm ({ func,vis}){
                         search
                         selection
                         options={options}
-                       
                         onChange={getRating}
-                       
                     />
-
                 </Grid.Row>
 
                 <Grid.Row className="addfilm_row" stretched="true">
@@ -166,9 +137,7 @@ function SearchFilm ({ func,vis}){
                         search
                         selection
                         options={categoryOptions}
-                       
                         onChange={getCategory}
-                       
                     />
 
                 </Grid.Row>
@@ -186,18 +155,12 @@ function SearchFilm ({ func,vis}){
                     </Grid.Column>
                 </Grid.Row>
 
-
-
-
-
                 <Grid.Row >
                     
                         {films.map((data) => {
                             return (
 
                             <FilmCard key={data.FilmId} data={data} func={func} vis={vis}/>
-
-                            
                         );
                     })}
                    

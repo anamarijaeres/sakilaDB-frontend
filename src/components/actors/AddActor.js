@@ -67,7 +67,7 @@ class AddActor extends React.Component{
                 <Form onSubmit={this.onSubmit}>
                     <Form.Field>
                         <label>First Name</label>
-                        <Input error placeholder='First Name' name="firstName" type="text" value={this.state.firstName} onChange={this.onChange}/>
+                        <Input placeholder='First Name' name="firstName" type="text" value={this.state.firstName} onChange={this.onChange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Last Name</label>

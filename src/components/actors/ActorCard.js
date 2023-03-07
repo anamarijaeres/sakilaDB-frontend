@@ -89,6 +89,6 @@ function ActorCard({ data ,func,vis}){
         </Card.Content>
     </Card>
 
-    )
+    );
 }
 export default ActorCard

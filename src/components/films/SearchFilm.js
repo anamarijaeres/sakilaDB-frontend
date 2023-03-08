@@ -4,6 +4,7 @@ import axios from "axios";
 import "../../index.css"
 import FilmCard from "./FilmCard";
 import AddFilm from "./AddFilm";
+import { apiUrl } from "../../config/constants";
 
 function SearchFilm ({ func,vis}){
     const [text, setText] =useState('')

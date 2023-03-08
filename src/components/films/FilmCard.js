@@ -3,7 +3,7 @@ import { Card ,Button,Icon,Reveal,Popup} from "semantic-ui-react";
 import axios from "axios";
 
 import "../../index.css"
-
+import { apiUrl } from "../../config/constants";
 
 
 function FilmCard({ data ,func}){
@@ -16,7 +16,7 @@ function FilmCard({ data ,func}){
         console.log(open)
 
        axios
-        .get("http://localhost:8080/films/"+id)
+        .get(`${apiUrl}/films/`+id)
         .then((result) => {
             console.log(open)
             console.log(result.data);
@@ -31,7 +31,7 @@ function FilmCard({ data ,func}){
         const tit=data.Title
         console.log(tit)
         console.log('Delete clicked')
-        const url="http://localhost:8080/films/"+id
+        const url=`${apiUrl}/films/`+id
         console.log(url)
         axios
         .delete(url)

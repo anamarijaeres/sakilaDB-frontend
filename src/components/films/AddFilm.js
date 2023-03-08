@@ -49,7 +49,7 @@ class AddFilm extends React.Component{
         }else{
         console.log(this.state)
         axios
-        .post(`${apiUrl}/films/`,
+        .post(`${this.apiUrl}/films/`,
                     {
                        Title:this.state.title,
                        Description:this.state.description,

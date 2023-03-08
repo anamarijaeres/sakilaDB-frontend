@@ -36,7 +36,7 @@ class AddActor extends React.Component{
             
             axios
             .post(
-                    `${apiUrl}/actors/`,
+                    `${this.apiUrl}/actors/`,
                     {
                         FirstName:this.state.firstName,
                         LastName:this.state.lastName

@@ -4,12 +4,13 @@ import axios from "axios";
 import "../../index.css"
 import FilmCard from "./FilmCard";
 import AddFilm from "./AddFilm";
-import { apiUrl } from "../../config/constants";
+
 
 function SearchFilm ({ func,vis}){
     const [text, setText] =useState('')
     const [films,setFilms]= useState([]);
     const [amount, setAmount] =useState('')
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
    
     const options = [
         { key: 'G', value: 'G',  text: 'G' },
@@ -43,7 +44,7 @@ function SearchFilm ({ func,vis}){
 
     const handleOnClick= () =>{
         console.log('Search clicked')
-        const url="http://localhost:8080/films/?search="+text
+        const url=`${apiUrl}/films/?search=`+text
         console.log(url)
         axios
         .get(url)
@@ -59,7 +60,7 @@ function SearchFilm ({ func,vis}){
 
     const handleOnClickRentalRate= () =>{
         console.log('Renatl rate clicked')
-        const url="http://localhost:8080/films/rent?rent="+amount
+        const url=`${apiUrl}/films/rent?rent=`+amount
         console.log(url)
         axios
         .get(url)
@@ -76,7 +77,7 @@ function SearchFilm ({ func,vis}){
     const getRating = (event, {value}) => {
         console.log(value);
         console.log('Rating clicked')
-        const url="http://localhost:8080/films/rating?rating="+value
+        const url=`${apiUrl}/films/rating?rating=`+value
         console.log(url)
         axios
         .get(url)
@@ -92,7 +93,7 @@ function SearchFilm ({ func,vis}){
     const getCategory = (event, {value}) => {
         console.log(value);
         console.log('Category clicked')
-        const url="http://localhost:8080/films/category?c="+value
+        const url=`${apiUrl}/films/category?c=`+value
         console.log(url)
         axios
         .get(url)

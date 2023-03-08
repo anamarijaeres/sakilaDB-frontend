@@ -9,11 +9,12 @@ import ActorCard from "./ActorCard";
 function SearchBar ({func,vis}){
     const [text, setText] =useState('')
     const [actors,setActors]= useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
    
 
     const handleOnClick= () =>{
         console.log('Search clicked')
-        const url="http://localhost:8080/actors/search?s="+text
+        const url=`${apiUrl}/actors/search?s=`+text
         console.log(url)
         axios
         .get(url)

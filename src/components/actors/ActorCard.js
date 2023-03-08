@@ -5,9 +5,9 @@ import axios from "axios";
 import "../../index.css"
 
 
-
 function ActorCard({ data ,func,vis}){
     const [open,setOpen]=useState(true)
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
  
 
     const handleClickOpen = (id) => {
@@ -19,7 +19,7 @@ function ActorCard({ data ,func,vis}){
         console.log(open)
 
         axios
-        .get("http://localhost:8080/actors/filmsById/"+id)
+        .get(`${apiUrl}/actors/filmsById/`+id)
         .then((result) => {
             console.log(open)
             console.log(result.data);
@@ -43,7 +43,7 @@ function ActorCard({ data ,func,vis}){
         const tit=data.Title
         console.log(tit)
         console.log('Delete clicked')
-        const url="http://localhost:8080/actors/"+id
+        const url=`${apiUrl}/actors/` +id
         console.log(url)
         axios
         .delete(url)

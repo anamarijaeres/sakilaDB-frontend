@@ -3,8 +3,8 @@ import { Button, Modal,Form,Input,Select,TextArea } from 'semantic-ui-react'
 import axios from "axios";
 
 import "../../index.css"
-import { apiUrl } from '../../config/constants';
-let endpoint = "http://localhost:8080";
+
+
 
 class AddFilm extends React.Component{
     constructor(props) {
@@ -19,6 +19,7 @@ class AddFilm extends React.Component{
         };
         this.onSubmit=this.onSubmit.bind(this);
     }
+    apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
   
 
     options = [
@@ -48,7 +49,7 @@ class AddFilm extends React.Component{
         }else{
         console.log(this.state)
         axios
-        .post(endpoint + "/films",
+        .post(`${apiUrl}/films/`,
                     {
                        Title:this.state.title,
                        Description:this.state.description,

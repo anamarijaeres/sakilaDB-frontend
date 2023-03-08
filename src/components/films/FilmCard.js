@@ -3,11 +3,12 @@ import { Card ,Button,Icon,Reveal,Popup} from "semantic-ui-react";
 import axios from "axios";
 
 import "../../index.css"
-import { apiUrl } from "../../config/constants";
+
 
 
 function FilmCard({ data ,func}){
     const [open,setOpen]=useState(false)
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
   
 
     const handleClickOpen = (id) => {

@@ -2,7 +2,8 @@ import React from 'react';
 import axios from "axios";
 import { Button,  Form,Input} from 'semantic-ui-react'
 
-let endpoint = "http://localhost:8080";
+
+
 
 class AddActor extends React.Component{
     constructor(props) {
@@ -14,6 +15,7 @@ class AddActor extends React.Component{
         };
         this.onSubmit=this.onSubmit.bind(this);
     }
+        apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
     
     
         onChange =  (event) => {
@@ -34,7 +36,7 @@ class AddActor extends React.Component{
             
             axios
             .post(
-                    endpoint + "/actors",
+                    `${apiUrl}/actors/`,
                     {
                         FirstName:this.state.firstName,
                         LastName:this.state.lastName

@@ -6,10 +6,12 @@ import "../../index.css"
 
 
 
-function FilmCard({ data ,func}){
+function FilmCard({ data ,func,func_category}){
     const [open,setOpen]=useState(false)
+    const [open3,setOpen3]=useState(true)
+    const [category, setCategory]=useState("")
     const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
-  
+    const apiUrl1 = process.env.REACT_APP_API_URL || "http://localhost:8081";
 
     const handleClickOpen = (id) => {
         setOpen(!open)
@@ -25,6 +27,15 @@ function FilmCard({ data ,func}){
             
         })
         .catch((error) => console.log(error));
+
+        axios
+        .get(`${apiUrl}/films/category/`+id)
+        .then((result)=>{
+            console.log(result.data)
+            func_category(result.data)
+
+        })
+        .catch((error)=>console.log(error))
 
     }
 
@@ -46,6 +57,24 @@ function FilmCard({ data ,func}){
         console.log(error)});
     }
 
+    const categoryClicked= (id)=>{
+        setOpen3(!open3)
+
+        if(open3){
+        
+        axios
+        .get(`${apiUrl1}/films/category?id=`+data.FilmId)
+        .then((result) => {
+            console.log(result.data);
+            setCategory(result.data[0].Name);
+        
+        })
+        .catch((error) => console.log(error));
+        }else{
+            setCategory("")
+        }
+    }
+
 
 
 
@@ -60,6 +89,11 @@ function FilmCard({ data ,func}){
                     <p>Rental rate: {data.RentalRate}$</p>
                 </div>
             </Card.Content>
+            <Card.Content extra textAlign="ceter" streched>
+             <Button className=".btn" basic color='blue' content={ open3?'Get category':'Close'} onClick={()=>categoryClicked(data.FilmId)} / > 
+             <p> </p>
+             <p> {category}</p>
+        </Card.Content>
         <Card.Content extra visible >
         
             <div className="more_btn">

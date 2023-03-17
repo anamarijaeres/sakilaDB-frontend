@@ -7,6 +7,7 @@ import "../index.css"
 const Films = () => {
   const [open,setOpen]=useState(true)
   const [film,setFilm]= useState([]);
+  const [category,setCategory]=useState([])
 
   const pull_data_from_card=(open,data)=>{
  
@@ -14,7 +15,14 @@ const Films = () => {
     console.log(open)
     setFilm(data)
     setOpen(open)
+    
 
+
+  }
+
+  const pull_category_from_card=(category) =>{
+  
+      setCategory(category)
   }
 
 
@@ -26,7 +34,7 @@ const Films = () => {
         <Grid columns={2} divided>
             <Grid.Row>
                 <Grid.Column>
-                    <SearchFilm func={pull_data_from_card} vis={true}/>
+                    <SearchFilm func={pull_data_from_card} func_category={pull_category_from_card}/>
                 </Grid.Column>
                 <Grid.Column>
                      <TransitionablePortal
@@ -48,6 +56,11 @@ const Films = () => {
                                 <p>Length: {film.Length} min</p>
                                 <p>Rating: {film.Rating}</p>
                                 <p>Rental rate: {film.RentalRate}$</p>
+                                {category.map((data) => {
+                                      return (
+                                      <p> Category: {data.Name}</p>
+                                  );
+                                })}
 
                               </Card.Content>
                                   <Card.Content extra>

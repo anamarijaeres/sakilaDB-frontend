@@ -3,29 +3,30 @@ import { Grid,Input ,Button, GridColumn} from "semantic-ui-react";
 import axios from "axios";
 
 import "../../index.css"
-import ActorCard from "./ActorCard";
+
+import CountryCard from "./CountryCard";
 
 
-function SearchBar ({func,vis}){
+function SearchCountry ({func}){
     const [text, setText] =useState('')
-    const [actors,setActors]= useState([]);
-    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
+    const [countries,setCountries]= useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8081";
  
 
     const handleOnClick= () =>{
-        console.log('Search clicked')
-        const url=`${apiUrl}/actors/search?s=`+text
+        console.log('Search countries clicked')
+        const url=`${apiUrl}/country/search?s=`+text
         console.log(url)
         axios
         .get(url)
         .then((result) => {
             console.log(result.data);
-            setActors(result.data);
+            setCountries(result.data);
         
         })
         .catch((error) => console.log(error));
-        console.log("Search bar")
-        console.log(vis)
+        console.log("Search countries bar")
+       
 
         
     }
@@ -40,16 +41,16 @@ function SearchBar ({func,vis}){
                         <Input placeholder='Search...' type="text" value={text} onChange={(e)=> setText(e.target.value)}/>
                     </Grid.Column>
                     <GridColumn>
-                        <Button  onClick={handleOnClick}>Search actors by name</Button>
+                        <Button  onClick={handleOnClick}>Search countries by name</Button>
                     </GridColumn>
                 </Grid.Row>
             
             
                 <Grid.Row>
                     
-                        {actors.map((data) => {
+                        {countries.map((data) => {
                             return (
-                                <ActorCard key={data.ActorId} data={data} func={func} vis={vis}/>
+                                <CountryCard key={data.CountryId} data={data} func={func} />
                         );
                     })}
                    
@@ -60,4 +61,4 @@ function SearchBar ({func,vis}){
     )
 }
 
-export default SearchBar;
+export default SearchCountry;

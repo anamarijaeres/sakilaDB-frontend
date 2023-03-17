@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Grid,Input ,Button, GridColumn,Dropdown,Label} from "semantic-ui-react";
 import axios from "axios";
 import "../../index.css"
@@ -6,10 +6,12 @@ import FilmCard from "./FilmCard";
 import AddFilm from "./AddFilm";
 
 
-function SearchFilm ({ func,vis}){
-    const [text, setText] =useState('')
+function SearchFilm ({ func,func_category}){
+    const [text, setText] =useState('') 
     const [films,setFilms]= useState([]);
     const [amount, setAmount] =useState('')
+    const [rating, setRating] =useState('')
+    const [category,setCategory]=useState('')
     const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
    
     const options = [
@@ -72,10 +74,19 @@ function SearchFilm ({ func,vis}){
         .catch((error) => console.log(error));
     }
 
-    
+    useEffect(() => {
+        // Update the document title using the browser API
+        console.log("UE")
+        console.log(rating)
+        console.log(category)
+
+        
+
+      }, [rating,category]);
 
     const getRating = (event, {value}) => {
         console.log(value);
+        setRating(value)
         console.log('Rating clicked')
         const url=`${apiUrl}/films/rating?rating=`+value
         console.log(url)
@@ -88,10 +99,13 @@ function SearchFilm ({ func,vis}){
         
         })
         .catch((error) => console.log(error));
+        
+
     }
 
     const getCategory = (event, {value}) => {
         console.log(value);
+        setCategory(value)
         console.log('Category clicked')
         const url=`${apiUrl}/films/category?c=`+value
         console.log(url)
@@ -123,6 +137,7 @@ function SearchFilm ({ func,vis}){
 
                 <Grid.Row className="addfilm_row" stretched="true">
                     <Dropdown
+                        clearable
                         placeholder='Select Rating'
                         fluid
                         search
@@ -134,6 +149,7 @@ function SearchFilm ({ func,vis}){
 
                 <Grid.Row className="addfilm_row" stretched="true">
                     <Dropdown
+                        clearable
                         placeholder='Select Category'
                         fluid
                         search
@@ -162,7 +178,7 @@ function SearchFilm ({ func,vis}){
                         {films.map((data) => {
                             return (
 
-                            <FilmCard key={data.FilmId} data={data} func={func} vis={vis}/>
+                            <FilmCard key={data.FilmId} data={data} func={func} func_category={func_category} />
                         );
                     })}
                    

@@ -7,7 +7,11 @@ import "../../index.css"
 
 function ActorCard({ data ,func,vis}){
     const [open,setOpen]=useState(true)
-    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
+    const [open2,setOpen2]=useState(true)
+    const [open3,setOpen3]=useState(true)
+    const [no,setNo]=useState("")
+    const apiUrl0 = process.env.REACT_APP_API_URL || "http://localhost:8080";
+    const apiUrl1 = process.env.REACT_APP_API_URL || "http://localhost:8081";
  
 
     const handleClickOpen = (id) => {
@@ -19,7 +23,7 @@ function ActorCard({ data ,func,vis}){
         console.log(open)
 
         axios
-        .get(`${apiUrl}/actors/filmsById/`+id)
+        .get(`${apiUrl0}/actors/filmsById/`+id)
         .then((result) => {
             console.log(open)
             console.log(result.data);
@@ -39,11 +43,33 @@ function ActorCard({ data ,func,vis}){
 
     }
 
+    const handleClickSort = (id) => {
+        
+        setOpen2(!open2)
+        if(open2){
+            console.log("One more day")
+        axios
+        .get(`${apiUrl1}/actors/filmsByLength?id=`+id)
+        .then((result) => {
+            console.log(open)
+            console.log(result.data);
+            
+            func(open2,result.data)
+            
+        })
+        .catch((error) => console.log(error));
+
+        }
+
+
+
+    }
+
     const handleDelete= (id)=>{
         const tit=data.Title
         console.log(tit)
         console.log('Delete clicked')
-        const url=`${apiUrl}/actors/` +id
+        const url=`${apiUrl0}/actors/` +id
         console.log(url)
         axios
         .delete(url)
@@ -59,20 +85,43 @@ function ActorCard({ data ,func,vis}){
     
 
     }
+    const numberOfFilms=(id)=>{
+        setOpen3(!open3)
+
+        if(open3){
+        console.log("card")
+        console.log(open)
+        axios
+        .get(`${apiUrl1}/actors/numfilms?id=`+data.ActorId)
+        .then((result) => {
+            console.log(result.data);
+            setNo(result.data);
+        
+        })
+        .catch((error) => console.log(error));
+        }else{
+            setNo("")
+        }
+    }
 
 
 
 
 
     return(
-        <Card key={data.ActorId}textAlign="left">
+        <Card key={data.ActorId}>
         <Card.Content header={data.FirstName} />
         <Card.Content description={data.LastName} />
         
+        <Card.Content extra textAlign="ceter" streched>
+             <Button className=".btn" basic color='blue' content={ open3?'Number of films':'Close'} onClick={()=>numberOfFilms(data.ActorId)} / > 
+             <p> </p>
+             <p> {no}</p>
+        </Card.Content>
         <Card.Content extra textAlign="left">
             <Button className=".btn" basic color='blue' content={vis ?  'Show films':(open?'Show films':'Close') } onClick={()=>handleClickOpen(data.ActorId)} / >
            
-            
+            <Button className=".btn" basic color='blue' disabled={open} content={ 'Sort by length'} onClick={()=>handleClickSort(data.ActorId)} / >
             <div className="delete_btn">
                 
 

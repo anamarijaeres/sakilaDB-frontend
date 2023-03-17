@@ -20,6 +20,7 @@ function AllActors({films}) {
                                 <Card.Content description={data.Description} />
                                 <Card.Content extra>
                                     <div className="film_card_extra" >
+                                        <p>Length: {data.Length}</p>
                                         <p>Rating: {data.Rating}</p>
                                         <p>Rental rate: {data.RentalRate}$</p>
                                     </div>

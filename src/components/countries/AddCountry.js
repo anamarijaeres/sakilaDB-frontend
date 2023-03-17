@@ -5,17 +5,16 @@ import { Button,  Form,Input} from 'semantic-ui-react'
 
 
 
-class AddActor extends React.Component{
+class AddCountry extends React.Component{
     constructor(props) {
         super(props)
 
         this.state = {
-            firstName: "",
-            lastName: "",
+            country: "",
         };
         this.onSubmit=this.onSubmit.bind(this);
     }
-        apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
+        apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8081";
     
     
         onChange =  (event) => {
@@ -26,20 +25,15 @@ class AddActor extends React.Component{
         };
         onSubmit =() => {
             
-            if(this.state.firstName.length===0 || this.state.lastName.length===0){
-                alert("You cannot add an actor with blank first/last name!")
+            if(this.state.country.length===0){
+                alert("You cannot add a country with blank country name!")
             }else{
-
-           
-            console.log(this.state.firstName)
-            console.log(this.state.lastName)
             
             axios
             .post(
-                    `${this.apiUrl}/actors/`,
+                    `${this.apiUrl}/country`,
                     {
-                        FirstName:this.state.firstName,
-                        LastName:this.state.lastName
+                        Country:this.state.country
                     },
                     {
                         headers: {
@@ -50,12 +44,11 @@ class AddActor extends React.Component{
                 )
                 .then((res) => {
                     this.setState({
-                        firstName: "",
-                        lastName:""
+                        country: ""
                     });
                     console.log(res);
                     console.log(res.status);
-                    alert("You've added new actor!")
+                    alert("You've added a new country!")
                 }).catch((error) =>{
                     console.log(error)});
                 }
@@ -65,16 +58,13 @@ class AddActor extends React.Component{
         render() {
             return(
             <div>
-                <h3>Add a new Actor</h3>
+                <h3>Add a new country</h3>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Field>
-                        <label>First Name</label>
-                        <Input placeholder='First Name' name="firstName" type="text" value={this.state.firstName} onChange={this.onChange}/>
+                        <label>Country Name</label>
+                        <Input placeholder='Country Name' name="country" type="text" value={this.state.country} onChange={this.onChange}/>
                     </Form.Field>
-                    <Form.Field>
-                        <label>Last Name</label>
-                        <input placeholder='Last Name' name="lastName" type="text" value={this.state.lastName} onChange={this.onChange}/>
-                    </Form.Field>
+                   
                     <Button type='submit'>Submit</Button>
 
                 </Form>
@@ -84,4 +74,4 @@ class AddActor extends React.Component{
     
 }
 
-export default AddActor
+export default AddCountry

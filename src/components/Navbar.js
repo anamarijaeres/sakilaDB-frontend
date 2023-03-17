@@ -23,6 +23,11 @@ const Navbar = () => {
                 Films
               </NavLink>
             </div>
+            <div>
+              <NavLink to="/countries" activeStyle>
+                Countries
+              </NavLink>
+            </div>
           </NavMenu>
         </Nav>
       </>
